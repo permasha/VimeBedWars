@@ -1,0 +1,15 @@
+teams:
+  red:
+    spawn: "-223;83;218"
+    bed: "-221;83;214"
+  blue:
+    spawn: "-223;83;232"
+    bed: "-221;83;236"
+spawnLocations:
+  shops:
+    - "-220;83;217"
+    - "-220;83;233"
+  resource:
+    - "-223;83;225"
+minPlayers: 2
+maxPlayers: 4
