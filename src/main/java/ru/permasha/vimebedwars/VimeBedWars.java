@@ -49,6 +49,8 @@ public class VimeBedWars extends JavaPlugin {
             e.printStackTrace();
             System.out.println("Failed to connect to database! " + e.getMessage());
             Bukkit.getPluginManager().disablePlugin(this);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -57,7 +59,7 @@ public class VimeBedWars extends JavaPlugin {
                 new BlockBreak(this),
                 new EntityDamage(this),
                 new InventoryClick(this),
-                new PlayerInteractAtEntity(this),
+                new PlayerInteractEntity(this),
                 new PlayerJoin(this)
         );
     }

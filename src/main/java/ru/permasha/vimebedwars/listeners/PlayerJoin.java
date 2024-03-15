@@ -27,7 +27,7 @@ public class PlayerJoin implements Listener {
         BedWarsPlayer bedWarsPlayer =  new BedWarsPlayer(player);
 
         plugin.getGameManager().getGame().joinGame(bedWarsPlayer);
-        player.setGameMode(GameMode.ADVENTURE);
+        player.setGameMode(GameMode.SURVIVAL);
     }
 
 }

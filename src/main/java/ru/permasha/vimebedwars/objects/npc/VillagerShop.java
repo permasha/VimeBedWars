@@ -13,10 +13,11 @@ public class VillagerShop {
 
     public VillagerShop(Location location) {
         this.location = location;
+        this.entity = createEntity();
     }
 
-    public void createEntity() {
-        location.getWorld().spawnEntity(location, EntityType.VILLAGER);
+    public Entity createEntity() {
+       return location.getWorld().spawnEntity(location, EntityType.VILLAGER);
     }
 
 }

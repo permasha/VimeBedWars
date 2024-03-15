@@ -1,6 +1,7 @@
 package ru.permasha.vimebedwars.objects.game;
 
 import lombok.Getter;
+import lombok.Setter;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -19,7 +20,7 @@ import java.util.List;
 @Getter
 public class Game {
 
-    Collection<BedWarsPlayer> players;
+    List<BedWarsPlayer> players;
     GameState gameState = GameState.WAITING;
 
     int minPlayers;
@@ -31,12 +32,13 @@ public class Game {
     List<VillagerShop> villagers;
 
     public Game(int minPlayers, int maxPlayers, List<Team> teams, List<Location> resourcesDrop, List<Location> shopsLocation) {
-        this.players = Collections.emptyList();
+        this.players = new ArrayList<>();
         this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
         this.teams = teams;
         this.resourcesDrop = resourcesDrop;
         this.shopsLocation = shopsLocation;
+        this.villagers = new ArrayList<>();
     }
 
     public void joinGame(BedWarsPlayer player) {
@@ -70,7 +72,7 @@ public class Game {
             villagers.add(shop);
         });
 
-        new ResourceDropTask(this).runTaskTimerAsynchronously(VimeBedWars.getInstance(), 600, 600);
+        new ResourceDropTask(this).runTaskTimer(VimeBedWars.getInstance(), 600, 600);
     }
 
     public void endGame() {

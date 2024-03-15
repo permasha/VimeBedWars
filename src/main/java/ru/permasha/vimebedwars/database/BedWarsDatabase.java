@@ -7,7 +7,8 @@ import java.sql.*;
 public class BedWarsDatabase {
     private final Connection connection;
 
-    public BedWarsDatabase(String path) throws SQLException {
+    public BedWarsDatabase(String path) throws SQLException, ClassNotFoundException {
+        Class.forName("org.sqlite.JDBC");
         connection = DriverManager.getConnection("jdbc:sqlite:" + path);
         try (Statement statement = connection.createStatement()) {
             statement.execute("CREATE TABLE IF NOT EXISTS players (" +
