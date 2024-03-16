@@ -3,6 +3,7 @@ package ru.permasha.vimebedwars;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.permasha.vimebedwars.configuration.Configuration;
 import ru.permasha.vimebedwars.database.BedWarsDatabase;
@@ -11,6 +12,7 @@ import ru.permasha.vimebedwars.managers.GameManager;
 import ru.permasha.vimebedwars.managers.ShopManager;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 
 @Getter
 public class VimeBedWars extends JavaPlugin {
@@ -65,14 +67,9 @@ public class VimeBedWars extends JavaPlugin {
     }
 
     private void getEvents(Listener... listeners) {
-        byte b;
-        int i;
-        Listener[] arrayOfListener;
-        for (i = (arrayOfListener = listeners).length, b = 0; b < i; ) {
-            Listener l = arrayOfListener[b];
-            getServer().getPluginManager().registerEvents(l, this);
-            b++;
-        }
+        Arrays.stream(listeners).iterator().forEachRemaining(listener -> {
+            Bukkit.getPluginManager().registerEvents(listener, this);
+        });
     }
 
     @Override
