@@ -67,7 +67,7 @@ public class VimeBedWars extends JavaPlugin {
     }
 
     private void getEvents(Listener... listeners) {
-        Arrays.stream(listeners).iterator().forEachRemaining(listener -> {
+        Arrays.stream(listeners).forEach(listener -> {
             Bukkit.getPluginManager().registerEvents(listener, this);
         });
     }

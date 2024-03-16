@@ -81,6 +81,7 @@ public class BedWarsDatabase {
             } else {
                 return 0; // Return 0 if the player has no points
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
