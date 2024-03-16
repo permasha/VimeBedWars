@@ -8,8 +8,8 @@ import org.bukkit.Location;
 @Setter
 public class Bed {
 
-    Location location;
-    boolean isAlive;
+    private final Location location;
+    private boolean isAlive;
 
     public Bed(Location location) {
         this.location = location;

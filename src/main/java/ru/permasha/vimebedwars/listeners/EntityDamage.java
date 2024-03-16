@@ -44,7 +44,7 @@ public class EntityDamage implements Listener {
     public void onKill(EntityDamageEvent event) {
         Entity entity = event.getEntity();
 
-        if (plugin.getGameManager().getGame().getGameState().equals(GameState.WAITING)) {
+        if (plugin.getGameManager().getGame().getGameState() == GameState.WAITING) {
             event.setCancelled(true);
             return;
         }

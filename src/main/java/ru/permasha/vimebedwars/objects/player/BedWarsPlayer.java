@@ -10,10 +10,10 @@ import ru.permasha.vimebedwars.objects.game.Team;
 @Setter
 public class BedWarsPlayer {
 
-    Player player;
-    Team team;
-    boolean isSpectator;
-    BedWarsPlayer damager;
+    private final Player player;
+    private Team team;
+    private boolean isSpectator;
+    private BedWarsPlayer damager;
 
     public BedWarsPlayer(Player player) {
         this.player = player;

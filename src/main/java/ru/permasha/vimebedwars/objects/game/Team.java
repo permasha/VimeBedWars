@@ -13,11 +13,11 @@ import java.util.List;
 @Setter
 public class Team {
 
-    TeamColor teamColor;
-    List<BedWarsPlayer> players;
+    private final TeamColor teamColor;
+    private final List<BedWarsPlayer> players;
 
-    Location spawnLocation;
-    Bed bed;
+    private final Location spawnLocation;
+    private final Bed bed;
 
     boolean isLose;
 

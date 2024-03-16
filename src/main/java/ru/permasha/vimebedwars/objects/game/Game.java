@@ -13,23 +13,21 @@ import ru.permasha.vimebedwars.objects.player.BedWarsPlayer;
 import ru.permasha.vimebedwars.tasks.ResourceDropTask;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Getter
 public class Game {
 
-    List<BedWarsPlayer> players;
-    GameState gameState = GameState.WAITING;
+    private final List<BedWarsPlayer> players;
+    private GameState gameState = GameState.WAITING;
 
-    int minPlayers;
-    int maxPlayers;
+    private final int minPlayers;
+    private final int maxPlayers;
 
-    List<Team> teams;
-    List<Location> resourcesDrop;
-    List<Location> shopsLocation;
-    List<VillagerShop> villagers;
+    private final List<Team> teams;
+    private final List<Location> resourcesDrop;
+    private final List<Location> shopsLocation;
+    private final List<VillagerShop> villagers;
 
     public Game(int minPlayers, int maxPlayers, List<Team> teams, List<Location> resourcesDrop, List<Location> shopsLocation) {
         this.players = new ArrayList<>();
@@ -43,7 +41,7 @@ public class Game {
 
     public void joinGame(BedWarsPlayer player) {
 
-        if (players.size() >= maxPlayers || gameState.equals(GameState.GAME)) {
+        if (players.size() >= maxPlayers || gameState == GameState.GAME) {
             player.getPlayer().kickPlayer(ChatColor.RED + "Ухади, игра идёт");
             return;
         }

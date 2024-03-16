@@ -8,8 +8,8 @@ import org.bukkit.entity.EntityType;
 @Getter
 public class VillagerShop {
 
-    Location location;
-    Entity entity;
+    private final Location location;
+    private final Entity entity;
 
     public VillagerShop(Location location) {
         this.location = location;

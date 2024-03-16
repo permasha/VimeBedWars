@@ -27,12 +27,12 @@ public class BlockBreak implements Listener {
         Block block = event.getBlock();
         Location location = block.getLocation();
 
-        if (plugin.getGameManager().getGame().getGameState().equals(GameState.WAITING)) {
+        if (plugin.getGameManager().getGame().getGameState() == GameState.WAITING) {
             event.setCancelled(true);
             return;
         }
 
-        if (!block.getType().equals(Material.BED_BLOCK)) {
+        if (block.getType() != Material.BED_BLOCK) {
             return;
         }
 
@@ -43,7 +43,7 @@ public class BlockBreak implements Listener {
             return;
         }
 
-        if (bedTeam.equals(bedWarsPlayer.getTeam())) {
+        if (bedTeam == bedWarsPlayer.getTeam()) {
             player.sendMessage("Нельзя ломать свою кровать!");
             event.setCancelled(true);
             return;

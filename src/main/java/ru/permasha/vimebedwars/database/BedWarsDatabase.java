@@ -27,6 +27,7 @@ public class BedWarsDatabase {
     }
 
     public void addPlayer(Player player) {
+        validateConnection();
         //this should error if the player already exists
         try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO players (uuid, username) VALUES (?, ?)")) {
             preparedStatement.setString(1, player.getUniqueId().toString());
@@ -38,6 +39,8 @@ public class BedWarsDatabase {
     }
 
     public boolean isPlayerExists(Player player) {
+        validateConnection();
+
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM players WHERE uuid = ?")) {
             preparedStatement.setString(1, player.getUniqueId().toString());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -49,6 +52,7 @@ public class BedWarsDatabase {
     }
 
     public void updatePlayerData(Player player, DataType dataType, int amount) {
+        validateConnection();
 
         if (!isPlayerExists(player)){
             addPlayer(player);
@@ -66,6 +70,7 @@ public class BedWarsDatabase {
     }
 
     public int getPlayerData(Player player, DataType dataType) {
+        validateConnection();
         String dStr = dataType.toString().toLowerCase();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT " + dStr + " FROM players WHERE uuid = ?")) {
@@ -80,6 +85,14 @@ public class BedWarsDatabase {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public void validateConnection() {
+        try {
+            connection.isValid(100000);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
