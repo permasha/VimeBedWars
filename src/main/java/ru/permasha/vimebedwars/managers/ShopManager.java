@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class ShopManager {
 
-    VimeBedWars plugin;
+    private VimeBedWars plugin;
 
     public ShopManager(VimeBedWars plugin) {
         this.plugin = plugin;

@@ -17,11 +17,11 @@ import java.util.Arrays;
 @Getter
 public class VimeBedWars extends JavaPlugin {
 
-    static VimeBedWars instance;
-    Configuration configuration;
-    BedWarsDatabase bedWarsDatabase;
-    GameManager gameManager;
-    ShopManager shopManager;
+    private static VimeBedWars instance;
+    private Configuration configuration;
+    private BedWarsDatabase bedWarsDatabase;
+    private GameManager gameManager;
+    private ShopManager shopManager;
 
     @Override
     public void onEnable() {
@@ -67,9 +67,9 @@ public class VimeBedWars extends JavaPlugin {
     }
 
     private void getEvents(Listener... listeners) {
-        Arrays.stream(listeners).forEach(listener -> {
+        for (Listener listener : listeners) {
             Bukkit.getPluginManager().registerEvents(listener, this);
-        });
+        }
     }
 
     @Override

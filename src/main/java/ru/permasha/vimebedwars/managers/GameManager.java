@@ -19,8 +19,8 @@ import java.util.List;
 @Getter
 public class GameManager {
 
-    VimeBedWars plugin;
-    Game game;
+    private final VimeBedWars plugin;
+    private final Game game;
 
     public GameManager(VimeBedWars plugin) {
         this.plugin = plugin;
