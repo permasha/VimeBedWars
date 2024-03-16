@@ -44,7 +44,11 @@ public class BedWarsDatabase {
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM players WHERE uuid = ?")) {
             preparedStatement.setString(1, player.getUniqueId().toString());
             ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
+            try {
+                return resultSet.next();
+            } finally {
+                resultSet.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,10 +80,14 @@ public class BedWarsDatabase {
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT " + dStr + " FROM players WHERE uuid = ?")) {
             preparedStatement.setString(1, player.getUniqueId().toString());
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return resultSet.getInt(dStr);
-            } else {
-                return 0; // Return 0 if the player has no points
+            try {
+                if (resultSet.next()) {
+                    return resultSet.getInt(dStr);
+                } else {
+                    return 0;
+                }
+            } finally {
+                resultSet.close();
             }
 
         } catch (SQLException e) {
